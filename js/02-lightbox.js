@@ -18,14 +18,6 @@ function createPicturesMarkup(items) {
   }).join('');
 }
 
-function onClickPicture(evt) {
-  evt.preventDefault();
-  if (evt.target.nodeName !== 'IMG') {
-    return;
-  }
-}
-
-
 
 let imgGallery = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
@@ -33,3 +25,10 @@ let imgGallery = new SimpleLightbox(".gallery a", {
   showCounter: false,
 });
 
+function onClickPicture(e) {
+  e.preventDefault();
+  imgGallery.on("show.simplelightbox");
+  imgGallery.on("error.simplelightbox", function (e) {
+    console.log("error in SimpleGallery =>", e);
+  });
+}
