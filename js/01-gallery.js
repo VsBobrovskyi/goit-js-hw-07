@@ -7,6 +7,7 @@ const galleryEl = document.querySelector('.gallery');
 const createMarkup = createPicturesMarkup(galleryItems);
 
 galleryEl.insertAdjacentHTML('beforeend', createMarkup);
+
 galleryEl.addEventListener('click', onClickPicture);
 
 function createPicturesMarkup(items) {
@@ -26,6 +27,7 @@ function createPicturesMarkup(items) {
     .join('');
 }
 
+
 function onClickPicture(evt) {
   evt.preventDefault();
   if (evt.target.nodeName !== 'IMG') {
@@ -37,9 +39,11 @@ function onClickPicture(evt) {
   );
   instance.show();
 
-  galleryEl.addEventListener('keydown', e => {
+  window.addEventListener('keydown', keyboardEscape);
+  function keyboardEscape(e) {
     if (e.code === 'Escape') {
+      window.removeEventListener('keydown', keyboardEscape);
       instance.close();
     }
-  });
+  }
 }

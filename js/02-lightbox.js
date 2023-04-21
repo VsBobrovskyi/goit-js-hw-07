@@ -6,7 +6,7 @@ console.log(galleryItems);
 const galleryEl = document.querySelector('.gallery');
 const createMarkup = createPicturesMarkup(galleryItems);
 galleryEl.insertAdjacentHTML('beforeend', createMarkup);
-galleryEl.addEventListener('click', onClickPicture);
+// galleryEl.addEventListener('click', onClickPicture);
 
 function createPicturesMarkup(items) {
   return galleryItems.map(({preview, original, description}) => {
@@ -25,10 +25,10 @@ let imgGallery = new SimpleLightbox(".gallery a", {
   showCounter: false,
 });
 
-function onClickPicture(e) {
-  e.preventDefault();
-  imgGallery.on("show.simplelightbox");
-  imgGallery.on("error.simplelightbox", function (e) {
-    console.log("error in SimpleGallery =>", e);
-  });
-}
+// function onClickPicture(e) {
+//   e.preventDefault();
+//   // imgGallery.on("show.simplelightbox");
+//   // imgGallery.on("error.simplelightbox", function (e) {
+//   //   console.log("error in SimpleGallery =>", e);
+//   // });
+// }
